@@ -7,7 +7,7 @@ from watchdog.events import FileSystemEventHandler
 
 # ---------------- 사용자 설정 ---------------- #
 # WATCH_PATH  = r"\\192.168.1.231\공유폴더"   # 감시할 네트워크 폴더
-WATCH_PATH = '/content/sample_data'
+WATCH_PATH = './test'
 INTERVAL    = 5                            # 초 단위 폴링 주기
 STATE_FILE  = "state.json"                  # 이전 상태 저장 파일
 TITLE       = "공용 폴더 변경 알림"          # 알림 제목
@@ -74,7 +74,7 @@ def notify(files: list) -> None:
 
 
 class PollHandler(FileSystemEventHandler):
-    """watchdog용 핸들러 – 실제로는 안 쓰고 타이머에서 처리"""
+    """watchdog용 핸들러 - 실제로는 안 쓰고 타이머에서 처리"""
     pass
 
 
