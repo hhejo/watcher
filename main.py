@@ -4,16 +4,10 @@ from datetime import datetime
 from typing import Dict, Tuple
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
-# from win10toast import ToastNotifier
-
 from config import *
+from notify import get_notifier
 
-# toaster = ToastNotifier()
-
-
-def notify(title, msg):
-    # toaster.show_toast(title, msg, duration=5, threaded=True)
-    return
+notify = get_notifier()
 
 
 class Handler(PatternMatchingEventHandler):
@@ -41,7 +35,7 @@ class Handler(PatternMatchingEventHandler):
         rel_str = self._get_rel_path(src_path)
         timestamp = datetime.now().strftime("[%H:%M:%S]")
         print(f"🔔 {timestamp}", f"[{event_type}]", rel_str)
-        title = '공용폴더 변경 알림'
+        title = "공용폴더 변경 알림"
         msg = f"{timestamp} {ALARM_TYPES[event_type]}\n{rel_str}"
         notify(title, msg)
     
