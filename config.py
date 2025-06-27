@@ -1,3 +1,4 @@
+# config.py
 import platform
 
 if platform.system() == "Windows":
@@ -6,7 +7,6 @@ elif platform.system() == "Darwin":
     WATCH_PATH = r'./test'
 else:
     WATCH_PATH = r'./test'
-
 
 SLEEP_TIME = 5
 DEBOUNCE = 5
