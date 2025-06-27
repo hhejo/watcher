@@ -1,3 +1,4 @@
+# notify.py
 import platform
 
 
@@ -5,13 +6,14 @@ def get_notifier():
     system = platform.system()
     if system == "Windows":
         try:
-            from win10toast import ToastNotifier
-            toaster = ToastNotifier()
+            from windows_toasts import WindowsToaster, Toast
+            toaster = WindowsToaster("Watcher")
             def notify(title, body):
-                toaster.show_toast(title, body, duration=5, threaded=True)
+                toast = Toast([title, body])
+                toaster.show_toast(toast)
         except ImportError:
             def notify(title, body):
-                print(f"[알림] {title}: {body} (win10toast 미설치)")
+                print(f"[알림] {title}: {body} (WindowsToaster 미설치)")
     elif system == "Darwin":
         try:
             import os, pync
